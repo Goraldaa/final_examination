@@ -6,6 +6,7 @@
 // [“Hello”, “2”, “world”, “:-)”] → [“2”, “:-)”]
 // [“1234”, “1567”, “-2”, “computer science”] → [“-2”]
 // [“Russia”, “Denmark”, “Kazan”] → []
+
 int NumberElementsSmallerLength(string[] arr, int length)
 {
     int count = 0;
@@ -13,6 +14,7 @@ int NumberElementsSmallerLength(string[] arr, int length)
         if (arr[i].Length <= length) count++;
     return count;
 }
+
 string[] NewArrayElementsSmallerLength(string[] arr, int length, int count)
 {
     string[] newArr = new string[count];
@@ -22,20 +24,24 @@ string[] NewArrayElementsSmallerLength(string[] arr, int length, int count)
             newArr[j] = arr[i];
             j++;
         }
-        return newArr;
+    return newArr;
 }
 void PrintArray(string[] array)
 {
-    Console.Write("[");
-    for (int i = 0; i < array.Length - 1; i++)
+    if (array.Length == 0) Console.WriteLine("[]");
+    else
     {
-        Console.Write($"{array[i]}, ");
+        Console.Write("[");
+        for (int i = 0; i < array.Length - 1; i++)
+        {
+            Console.Write($"{array[i]}, ");
+        }
+        Console.Write(array[array.Length - 1]);
+        Console.Write("]");
     }
-    Console.Write(array[array.Length - 1]);
-    Console.Write("]");
 }
 
-string[] array = new string[] { "Python", "Java", "C#", "C++", "R", "PHP", "SQL", "TypeScript" };
+string[] array = new string[] { "Russia", "Denmark", "Kazan" };
 int size = 3;
 int lengthNewArray = NumberElementsSmallerLength(array, size);
 string[] newArray = NewArrayElementsSmallerLength(array, size, lengthNewArray);
